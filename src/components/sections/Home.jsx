@@ -13,7 +13,7 @@ export const Home = () => {
                     Hi, I'm Faraz
                 </h1>
                 <p className="text-gray-400 text-lg mb-8 max-w-lg mx-auto">
-                    I'm a Full Stack Developer with experience primarily as a backend developer. The tech stack that
+                    I'm an aspiring Full Stack Developer with experience primarily in the backend. The tech stack that
                     I love to use is Java, Spring Boot, AWS, and PostgreSQL.
                 </p>
                 <div className="flex justify-center space-x-4">
