@@ -13,8 +13,9 @@ export const Home = () => {
                     Hi, I'm Faraz
                 </h1>
                 <p className="text-gray-400 text-lg mb-8 max-w-lg mx-auto">
-                    I'm an aspiring Full Stack Developer with experience primarily in the backend. The tech stack that
-                    I love to use is Java, Spring Boot, AWS, and PostgreSQL.
+                    I’m a Full Stack Developer with a strong focus on backend development.
+                    My preferred tech stack includes Java, Spring Boot, AWS, and PostgreSQL,
+                    and I enjoy building scalable, reliable systems that power modern web applications.
                 </p>
                 <div className="flex justify-center space-x-4">
                     <a

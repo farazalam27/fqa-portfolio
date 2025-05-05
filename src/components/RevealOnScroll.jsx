@@ -17,7 +17,7 @@ export const RevealOnScroll = ({children, className = ""}) => {
     });
 
     return (
-        <div ref={ref} className={`reveal w-full ${className}`}>
+        <div ref={ref} className={`reveal ${className}`}>
             {children}
         </div>
     );
