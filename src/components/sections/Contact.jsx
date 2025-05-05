@@ -38,7 +38,7 @@ export const Contact = () => {
                                 value={formData.name}
                                 className="w-full bg-white/5 border border-white/10 rounded px-4 py-3
                                 text-white transition focus:outline-none focus:border-blue-500 focus:bg-blue-500/5"
-                                placeholder="Name..."
+                                placeholder="Name"
                                 onChange={(e) => setFormData({...formData, name: e.target.value})}
                             />
                         </div>
@@ -52,7 +52,7 @@ export const Contact = () => {
                                 value={formData.email}
                                 className="w-full bg-white/5 border border-white/10 rounded px-4 py-3
                                 text-white transition focus:outline-none focus:border-blue-500 focus:bg-blue-500/5"
-                                placeholder="example@gmail.com"
+                                placeholder="Email Address"
                                 onChange={(e) => setFormData({...formData, email: e.target.value})}
                             />
                         </div>
@@ -66,7 +66,7 @@ export const Contact = () => {
                                 rows={5}
                                 className="w-full bg-white/5 border border-white/10 rounded px-4 py-3
                                 text-white transition focus:outline-none focus:border-blue-500 focus:bg-blue-500/5"
-                                placeholder="Your message..."
+                                placeholder="Message"
                                 onChange={(e) => setFormData({...formData, message: e.target.value})}
                             />
                         </div>
