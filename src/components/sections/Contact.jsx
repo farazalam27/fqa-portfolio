@@ -22,9 +22,9 @@ export const Contact = () => {
             .catch(() => alert('Oops! Something went wrong. Please try again.'));
     }
     return (
-        <section id="contact" className="min-h-screen flex items-center justify-center py-20">
-            <RevealOnScroll>
-                <div className="w-full max-w-5xl mx-auto px-4 sm:w-150">
+        <section id="contact" className="min-h-screen w-full flex items-center justify-center py-20 px-4">
+            <RevealOnScroll className="w-full max-w-screen-sm">
+                <div className="w-full">
                     <h2 className="text-3xl font-bold mb-8 bg-gradient-to-r from-blue-500 to-cyan-400 bg-clip-text text-transparent text-center">
                         Get In Touch
                     </h2>
