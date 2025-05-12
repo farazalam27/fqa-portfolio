@@ -2,7 +2,8 @@ import {RevealOnScroll} from "../RevealOnScroll.jsx";
 
 export const About = () => {
     const frontendSkills = ["React", "TypeScript", "JavaScript", "Tailwind CSS", "Next.js"];
-    const backendSkills = ["Spring Boot", "Java", "Python", "AWS", "PostgreSQL", "MongoDB", "Docker"];
+    const backendSkills = ["Spring Boot", "Java", "Python", "Golang", "Kotlin", "SQL", "AWS", "PostgreSQL", "MongoDB",
+                                    "Docker", "Postman", "Maven", "Gradle"];
 
     return (
         <section id="about" className="min-h-screen flex items-center justify-center py-20"
@@ -49,7 +50,7 @@ export const About = () => {
                         </div>
                     </div>
                 </div>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
+                <div className="grid grid-cols-1 gap-6 mt-8">
                     <div className="p-6 rounded-xl border-white/10 border hover:-translate-y-1 transition-all">
                         <h3 className="text-xl font-bold mb-4"> 📚 Education </h3>
                         <ul className="list-disc list-inside text-gray-300 space-y-2">
@@ -57,7 +58,7 @@ export const About = () => {
                                 <strong> B.S. in Computer Engineering </strong> - Virginia Tech 2020
                             </li>
                             <li>
-                                Relevant Coursework: Data Structures, Algorithms, Operating Systems, Databases,
+                                Relevant Coursework: Data Structures, Algorithms, Operating Systems, Databases
                             </li>
                         </ul>
                     </div>
@@ -68,13 +69,29 @@ export const About = () => {
                                 <h4 className="font-semibold">
                                     Software Engineer at CapTech (2020 - 2023)
                                 </h4>
-                                <p> Developed and maintained microservices for cloud-based applications.</p>
-                            </div>
-                            <div>
-                                <h4 className="font-semibold">
-                                    Intern Software Engineer at CapTech (2019)
-                                </h4>
-                                <p> Assisted in the development of an iOS application for a hospitality and tourism client.</p>
+                                <ul className={ "list-disc list-inside space-y-2" } >
+                                    <li>
+                                        Delivered high-impact solutions for Fortune 500 clients across energy, finance,
+                                        sports, and hospitality sectors
+                                    </li>
+                                    <li>
+                                        Modernized Java microservices and APIs for a major gas transmission company
+                                    </li>
+                                    <li>
+                                        Developed performance-optimized Go services for a leading banking card provider
+                                    </li>
+                                    <li>
+                                        Enhanced PGA Tour's Shotlander application with Kotlin optimizations
+                                    </li>
+                                    <li>
+                                        Implemented secure facial recognition features using AWS services and TensorFlow
+                                        for a hospitality giant
+                                    </li>
+                                    <li>
+                                        Leveraged diverse technologies including Spring Boot, MongoDB, PostgreSQL, and
+                                        AWS to create reliable, scalable solutions
+                                    </li>
+                                </ul>
                             </div>
                         </div>
                     </div>
