@@ -12,15 +12,23 @@ export const Contact = () => {
     })
 
     const handleSubmit = (e) => {
-        e.preventDefault()
+        e.preventDefault();
 
         emailjs
-            .sendForm(import.meta.env.VITE_SERVICE_ID, import.meta.env.VITE_TEMPLATE_ID, e.target, import.meta.env.VITE_PUBLIC_KEY)
-            .then(() =>
-                alert('Message Sent!'))
-                setFormData({name: '', email: '', message: ''})
-            .catch(() => alert('Oops! Something went wrong. Please try again.'));
-    }
+            .sendForm(
+                import.meta.env.VITE_SERVICE_ID,
+                import.meta.env.VITE_TEMPLATE_ID,
+                e.target,
+                import.meta.env.VITE_PUBLIC_KEY
+            )
+            .then(() => {
+                alert('Message Sent!');
+                setFormData({ name: '', email: '', message: '' });
+            })
+            .catch(() => {
+                alert('Oops! Something went wrong. Please try again.');
+            });
+    };
     return (
         <section id="contact" className="min-h-screen w-full flex items-center justify-center py-20 px-4">
             <RevealOnScroll className="w-full max-w-screen-sm">
