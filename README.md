@@ -1,12 +1,63 @@
-# React + Vite
+# fqa.info - Personal Portfolio Website
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern, responsive portfolio website built with React and Tailwind CSS. This portfolio showcases my projects, skills, and provides a way for visitors to contact me.
 
-Currently, two official plugins are available:
+![Portfolio Screenshot](public/portfolio-screenshot.png)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🌟 Features
 
-## Expanding the ESLint configuration
+- **Responsive Design**: Looks great on all devices from mobile to desktop
+- **Modern UI**: Clean, minimalist design with smooth animations
+- **Interactive Sections**:
+  - Home: Introduction and quick navigation
+  - About: Personal information and skills
+  - Projects: Showcase of my work with links
+  - Contact: Form to get in touch
+- **AI Chat Widget**: Interactive chat assistant that can answer questions about me
+- **Social Media Integration**: Links to LinkedIn and GitHub profiles
+- **Loading Screen**: Smooth transition when the site loads
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## 🛠️ Technologies Used
+
+- **React 19**: For building the user interface
+- **Tailwind CSS 4**: For styling
+- **Vite**: For fast development and optimized builds
+- **EmailJS**: For contact form functionality
+- **GitHub Pages**: For deployment
+
+## 📁 Project Structure
+
+```
+fqa-portfolio/
+├── public/             # Static assets
+├── src/                # Source files
+│   ├── assets/         # Images and other assets
+│   ├── components/     # React components
+│   │   ├── sections/   # Main page sections
+│   │   │   ├── Home.jsx
+│   │   │   ├── About.jsx
+│   │   │   ├── Projects.jsx
+│   │   │   └── Contact.jsx
+│   │   ├── ChatWidget.jsx
+│   │   ├── ChatWindow.jsx
+│   │   ├── LoadingScreen.jsx
+│   │   ├── MobileMenu.jsx
+│   │   ├── Navbar.jsx
+│   │   └── RevealOnScroll.jsx
+│   ├── App.jsx         # Main App component
+│   ├── index.css       # Global styles
+│   └── main.jsx        # Entry point
+├── index.html          # HTML template
+├── package.json        # Dependencies and scripts
+└── vite.config.js      # Vite configuration
+```
+
+## 📞 Contact
+
+- Website: [fqa.info](https://fqa.info)
+- LinkedIn: [linkedin.com/in/fqalam](https://www.linkedin.com/in/fqalam)
+- GitHub: [github.com/farazalam27](https://www.github.com/farazalam27)
+
+---
+
+Made with ❤️ by Faraz Alam
