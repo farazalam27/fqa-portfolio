@@ -2,8 +2,6 @@
 
 A modern, responsive portfolio website built with React and Tailwind CSS. This portfolio showcases my projects, skills, and provides a way for visitors to contact me.
 
-![Portfolio Screenshot](public/portfolio-screenshot.png)
-
 ## 🌟 Features
 
 - **Responsive Design**: Looks great on all devices from mobile to desktop
