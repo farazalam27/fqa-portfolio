@@ -35,11 +35,11 @@ export const Projects = () => {
 
                         <div className="flex justify-between items-center">
                             <a
-                                href="https://github.com/farazalam27/AltCaps"
+                                href="https://apps.apple.com/us/app/altcaps/id6745569694?uo=2"
                                 target="_blank"
                                 className="text-blue-400 hover:text-blue-300 transition-colors my-4"
                             >
-                                    View Project
+                                    View Extension
                             </a>
                         </div>
                     </div>
