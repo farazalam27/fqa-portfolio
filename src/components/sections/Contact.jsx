@@ -86,7 +86,7 @@ export const Contact = () => {
                             type="submit"
                             disabled={loading}
                             className={`w-full py-3 px-6 rounded font-medium transition relative overflow-hidden 
-                                        ${loading ? 'bg-gray-400 cursor-not-allowed' : 'bg-blue-500 text-white hover:-translate-y-0.5 hover:shadow-[0_0_15px_rgba(59,130,246,0.4)]'}`}
+                                        ${loading ? 'bg-gray-400 cursor-not-allowed' : 'bg-blue-500 text-white hover:-translate-y-0.5 hover:shadow-[0_0_15px_rgba(59,130,246,0.4)] cursor-pointer'}`}
                         >
                             {loading ? 'Sending...' : 'Send Message'}
                         </button>

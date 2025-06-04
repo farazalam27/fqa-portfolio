@@ -37,7 +37,11 @@ export const Projects = () => {
                             <a
                                 href="https://apps.apple.com/us/app/altcaps/id6745569694?uo=2"
                                 target="_blank"
-                                className="text-blue-400 hover:text-blue-300 transition-colors my-4"
+                                className="text-blue-400 hover:text-blue-300 transition-colors my-4 cursor-pointer"
+                                onClick={(e) => {
+                                    e.preventDefault();
+                                    window.open("https://apps.apple.com/us/app/altcaps/id6745569694?uo=2", "_blank");
+                                }}
                             >
                                     View Extension
                             </a>
@@ -66,7 +70,11 @@ export const Projects = () => {
                         <div className="flex justify-between items-center">
                             <a
                                 href="#"
-                                className="text-blue-400 hover:text-blue-300 transition-colors my-4"
+                                className="text-blue-400 hover:text-blue-300 transition-colors my-4 cursor-pointer"
+                                onClick={(e) => {
+                                    e.preventDefault();
+                                    // This is a placeholder link, so we'll just prevent the default action
+                                }}
                             >
                                 View Project
                             </a>
