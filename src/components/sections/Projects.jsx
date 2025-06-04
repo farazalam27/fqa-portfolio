@@ -42,6 +42,10 @@ export const Projects = () => {
                                     e.preventDefault();
                                     window.open("https://apps.apple.com/us/app/altcaps/id6745569694?uo=2", "_blank");
                                 }}
+                                onTouchEnd={(e) => {
+                                    e.preventDefault();
+                                    window.open("https://apps.apple.com/us/app/altcaps/id6745569694?uo=2", "_blank");
+                                }}
                             >
                                     View Extension
                             </a>
@@ -72,6 +76,10 @@ export const Projects = () => {
                                 href="#"
                                 className="text-blue-400 hover:text-blue-300 transition-colors my-4 cursor-pointer"
                                 onClick={(e) => {
+                                    e.preventDefault();
+                                    // This is a placeholder link, so we'll just prevent the default action
+                                }}
+                                onTouchEnd={(e) => {
                                     e.preventDefault();
                                     // This is a placeholder link, so we'll just prevent the default action
                                 }}
