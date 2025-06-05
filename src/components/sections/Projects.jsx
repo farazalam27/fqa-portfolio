@@ -55,12 +55,14 @@ export const Projects = () => {
                     <div className="p-6 rounded-xl border border-white/10 hover:-translate-y-1 hover:border-blue-500/30
                                     hover:shadow-[0_2px_8px_rgba(59, 130, 246, 0.1)] transition-all"
                     >
-                        <h3 className="text-xl font-bold mb-2">Project 2</h3>
+                        <h3 className="text-xl font-bold mb-2">Spring Review</h3>
                         <p className="text-gray-400 mb-4">
-                            More coming soon!
+                            A bookstore application built with Java and Spring Boot to review and reinforce core Spring concepts.
+                            This project implements RESTful APIs, database integration, and Spring security features in a
+                            practical, real-world context.
                         </p>
                         <div className="flex flex-wrap gap-2 mb-4">
-                            {["Java", "Spring Boot", "AWS", "Docker"].map((tech, key) => (
+                            {["Java", "Spring Boot", "REST API", "JPA"].map((tech, key) => (
                                 <span
                                     key={key}
                                     className="bg-blue-500/10 text-blue-500 py-1 px-3 rounded-full text-sm hover:bg-blue-500/20
@@ -73,15 +75,56 @@ export const Projects = () => {
 
                         <div className="flex justify-between items-center">
                             <a
-                                href="#"
+                                href="https://github.com/farazalam27/spring_review"
+                                target="_blank"
                                 className="text-blue-400 hover:text-blue-300 transition-colors my-4 cursor-pointer"
                                 onClick={(e) => {
                                     e.preventDefault();
-                                    // This is a placeholder link, so we'll just prevent the default action
+                                    window.open("https://github.com/farazalam27/spring_review", "_blank");
                                 }}
                                 onTouchEnd={(e) => {
                                     e.preventDefault();
-                                    // This is a placeholder link, so we'll just prevent the default action
+                                    window.open("https://github.com/farazalam27/spring_review", "_blank");
+                                }}
+                            >
+                                View Project
+                            </a>
+                        </div>
+                    </div>
+
+                    <div className="p-6 rounded-xl border border-white/10 hover:-translate-y-1 hover:border-blue-500/30
+                                    hover:shadow-[0_2px_8px_rgba(59, 130, 246, 0.1)] transition-all"
+                    >
+                        <h3 className="text-xl font-bold mb-2">Kotlin Bookstore</h3>
+                        <p className="text-gray-400 mb-4">
+                            An experimental bookstore application built with Kotlin and Spring Boot, showcasing the benefits
+                            of Kotlin's concise syntax and null safety features in a Spring environment. This project explores
+                            modern backend development practices with a focus on type safety and developer productivity.
+                        </p>
+                        <div className="flex flex-wrap gap-2 mb-4">
+                            {["Kotlin", "Spring Boot", "REST API", "Gradle"].map((tech, key) => (
+                                <span
+                                    key={key}
+                                    className="bg-blue-500/10 text-blue-500 py-1 px-3 rounded-full text-sm hover:bg-blue-500/20
+                                                    hover:shadow-[0_2px_8px_rgba(59, 130, 246, 0.1)] transition"
+                                >
+                                        {tech}
+                                </span>
+                            ))}
+                        </div>
+
+                        <div className="flex justify-between items-center">
+                            <a
+                                href="https://github.com/farazalam27/bookstore"
+                                target="_blank"
+                                className="text-blue-400 hover:text-blue-300 transition-colors my-4 cursor-pointer"
+                                onClick={(e) => {
+                                    e.preventDefault();
+                                    window.open("https://github.com/farazalam27/bookstore", "_blank");
+                                }}
+                                onTouchEnd={(e) => {
+                                    e.preventDefault();
+                                    window.open("https://github.com/farazalam27/bookstore", "_blank");
                                 }}
                             >
                                 View Project
