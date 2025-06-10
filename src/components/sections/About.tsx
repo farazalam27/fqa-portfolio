@@ -1,8 +1,9 @@
-import {RevealOnScroll} from "../RevealOnScroll.jsx";
+import { RevealOnScroll } from "../RevealOnScroll";
+import type { JSX } from 'react';
 
-export const About = () => {
-    const frontendSkills = ["React", "TypeScript", "JavaScript", "Tailwind CSS", "Next.js"];
-    const backendSkills = ["Spring Boot", "Java", "Python", "Golang", "Kotlin", "SQL", "AWS", "PostgreSQL", "MongoDB",
+export const About = (): JSX.Element => {
+    const frontendSkills: string[] = ["React", "TypeScript", "JavaScript", "Tailwind CSS", "Next.js"];
+    const backendSkills: string[] = ["Spring Boot", "Java", "Python", "Golang", "Kotlin", "SQL", "AWS", "PostgreSQL", "MongoDB",
                                     "Docker", "Postman", "Maven", "Gradle"];
 
     return (

@@ -1,6 +1,8 @@
-import {RevealOnScroll} from "../RevealOnScroll.jsx";
+import React from 'react';
+import { RevealOnScroll } from "../RevealOnScroll";
+import type { JSX } from 'react';
 
-export const Projects = () => {
+export const Projects = (): JSX.Element => {
     return (
         <section id="projects" className="min-h-screen flex items-center justify-center py-20"
         >
@@ -17,8 +19,8 @@ export const Projects = () => {
                         <h3 className="text-xl font-bold mb-2">AltCaps</h3>
                         <p className="text-gray-400 mb-4">
                             AltCaps is a minimalist iMessage extension that instantly converts any text into
-                            alternating-caps for playful trolling. With a sleek dark interface, one-tap “Paste” and
-                            “Transform & Add” buttons, it seamlessly injects stylized text into your chats—no extra apps
+                            alternating-caps for playful trolling. With a sleek dark interface, one-tap "Paste" and
+                            "Transform & Add" buttons, it seamlessly injects stylized text into your chats—no extra apps
                             required.
                         </p>
                         <div className="flex flex-wrap gap-2 mb-4">
@@ -38,11 +40,11 @@ export const Projects = () => {
                                 href="https://apps.apple.com/us/app/altcaps/id6745569694?uo=2"
                                 target="_blank"
                                 className="text-blue-400 hover:text-blue-300 transition-colors my-4 cursor-pointer"
-                                onClick={(e) => {
+                                onClick={(e: React.MouseEvent<HTMLAnchorElement>) => {
                                     e.preventDefault();
                                     window.open("https://apps.apple.com/us/app/altcaps/id6745569694?uo=2", "_blank");
                                 }}
-                                onTouchEnd={(e) => {
+                                onTouchEnd={(e: React.TouchEvent<HTMLAnchorElement>) => {
                                     e.preventDefault();
                                     window.open("https://apps.apple.com/us/app/altcaps/id6745569694?uo=2", "_blank");
                                 }}
@@ -78,11 +80,11 @@ export const Projects = () => {
                                 href="https://github.com/farazalam27/spring_review"
                                 target="_blank"
                                 className="text-blue-400 hover:text-blue-300 transition-colors my-4 cursor-pointer"
-                                onClick={(e) => {
+                                onClick={(e: React.MouseEvent<HTMLAnchorElement>) => {
                                     e.preventDefault();
                                     window.open("https://github.com/farazalam27/spring_review", "_blank");
                                 }}
-                                onTouchEnd={(e) => {
+                                onTouchEnd={(e: React.TouchEvent<HTMLAnchorElement>) => {
                                     e.preventDefault();
                                     window.open("https://github.com/farazalam27/spring_review", "_blank");
                                 }}
@@ -118,11 +120,11 @@ export const Projects = () => {
                                 href="https://github.com/farazalam27/bookstore"
                                 target="_blank"
                                 className="text-blue-400 hover:text-blue-300 transition-colors my-4 cursor-pointer"
-                                onClick={(e) => {
+                                onClick={(e: React.MouseEvent<HTMLAnchorElement>) => {
                                     e.preventDefault();
                                     window.open("https://github.com/farazalam27/bookstore", "_blank");
                                 }}
-                                onTouchEnd={(e) => {
+                                onTouchEnd={(e: React.TouchEvent<HTMLAnchorElement>) => {
                                     e.preventDefault();
                                     window.open("https://github.com/farazalam27/bookstore", "_blank");
                                 }}

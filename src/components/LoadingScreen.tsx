@@ -1,7 +1,12 @@
-import {useEffect, useState} from "react";
+import { useEffect, useState } from "react";
+import type { JSX } from 'react';
 
-export const LoadingScreen = ({onComplete}) => {
-    const [text, setText] = useState("")
+interface LoadingScreenProps {
+    onComplete: () => void;
+}
+
+export const LoadingScreen = ({ onComplete }: LoadingScreenProps): JSX.Element => {
+    const [text, setText] = useState<string>("");
     const fullText = "Hi there";
 
     useEffect(() => {

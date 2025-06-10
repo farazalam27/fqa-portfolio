@@ -1,7 +1,8 @@
-import {RevealOnScroll} from "../RevealOnScroll.jsx";
+import React from "react";
+import type { JSX } from 'react';
+import { RevealOnScroll } from "../RevealOnScroll";
 
-export const Home = () => {
-
+export const Home = (): JSX.Element => {
     return (
         <section
             id="home"
@@ -13,7 +14,7 @@ export const Home = () => {
                     Hi, I'm Faraz
                 </h1>
                 <p className="text-gray-400 text-lg mb-8 max-w-lg mx-auto">
-                    I’m a Full Stack Developer with a strong focus on backend development.
+                    I'm a Full Stack Developer with a strong focus on backend development.
                     My preferred tech stack includes Java, Spring Boot, AWS, and PostgreSQL,
                     and I enjoy building scalable, reliable systems that power modern web applications.
                 </p>
@@ -22,8 +23,14 @@ export const Home = () => {
                         href="#projects"
                         className="bg-blue-500 text-white py-3 px-6 rounded font-medium transition relative
                         overflow-hidden hover:-translate-y-0.5 hover:shadow-[0_0_15px_rgba(59, 130, 246, 0.4)] cursor-pointer"
-                        onClick={() => window.location.href = '#projects'}
-                        onTouchEnd={() => window.location.href = '#projects'}
+                        onClick={(e: React.MouseEvent<HTMLAnchorElement>) => {
+                            e.preventDefault();
+                            window.location.href = '#projects';
+                        }}
+                        onTouchEnd={(e: React.TouchEvent<HTMLAnchorElement>) => {
+                            e.preventDefault();
+                            window.location.href = '#projects';
+                        }}
                     >
                             View Projects
                     </a>
@@ -32,8 +39,14 @@ export const Home = () => {
                         href="#contact"
                         className="border border-blue-500/50 text-blue-500 py-3 px-6 rounded font-medium transition-all duration-200
                          hover:-translate-y-0.5 hover:shadow-[0_0_15px_rgba(59, 130, 246, 0.2)] hover:bg-blue-500/10 cursor-pointer"
-                        onClick={() => window.location.href = '#contact'}
-                        onTouchEnd={() => window.location.href = '#contact'}
+                        onClick={(e: React.MouseEvent<HTMLAnchorElement>) => {
+                            e.preventDefault();
+                            window.location.href = '#contact';
+                        }}
+                        onTouchEnd={(e: React.TouchEvent<HTMLAnchorElement>) => {
+                            e.preventDefault();
+                            window.location.href = '#contact';
+                        }}
                     >
                         Contact Me
                     </a>

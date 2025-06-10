@@ -1,6 +1,12 @@
-import {useEffect} from "react";
+import React from "react";
+import type { JSX } from 'react';
 
-export const MobileMenu = ({menuOpen, setMenuOpen}) => {
+interface MobileMenuProps {
+    menuOpen: boolean;
+    setMenuOpen: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
+export const MobileMenu = ({ menuOpen, setMenuOpen }: MobileMenuProps): JSX.Element => {
     return (
         <div className={`fixed top-0 left-0 w-full bg-[rgba(10,10,10,0.8)] z-40 flex flex-col items-center justify-center
                          transition-all duration-300 ease-in-out

@@ -1,15 +1,30 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
+import type { JSX } from 'react';
 
-export default function ChatWindow({ onClose, className }) {
-    const [messages, setMessages] = useState([
+interface ChatWindowProps {
+    onClose: () => void;
+    className: string;
+}
+
+interface Message {
+    role: 'user' | 'assistant';
+    content: string;
+}
+
+interface ApiResponse {
+    response: string;
+}
+
+export default function ChatWindow({ onClose, className }: ChatWindowProps): JSX.Element {
+    const [messages, setMessages] = useState<Message[]>([
         { role: 'assistant', content: "Hey! I'm Faraz's assistant. Ask me anything about him." }
     ]);
-    const [input, setInput] = useState('');
-    const [loading, setLoading] = useState(false);
+    const [input, setInput] = useState<string>('');
+    const [loading, setLoading] = useState<boolean>(false);
 
-    const sendMessage = async () => {
+    const sendMessage = async (): Promise<void> => {
         if (!input.trim()) return;
-        const newMessages = [...messages, { role: 'user', content: input }];
+        const newMessages: Message[] = [...messages, { role: 'user' as const, content: input }];
         setMessages(newMessages);
         setInput('');
         setLoading(true);
@@ -25,12 +40,12 @@ export default function ChatWindow({ onClose, className }) {
                 })
             });
 
-            const data = await res.json();
-            setMessages([...newMessages, { role: 'assistant', content: data.response }]);
+            const data: ApiResponse = await res.json();
+            setMessages([...newMessages, { role: 'assistant' as const, content: data.response }]);
         } catch (err) {
             console.error("Error fetching response:", err);
             setMessages([...newMessages, {
-                role: 'assistant',
+                role: 'assistant' as const,
                 content: '⚠️ My AI brain is offline right now. Try again later when Faraz turns me back on!'
             }]);
         }
@@ -52,8 +67,8 @@ export default function ChatWindow({ onClose, className }) {
             <div className="chat-input">
                 <input
                     value={input}
-                    onChange={e => setInput(e.target.value)}
-                    onKeyDown={e => e.key === 'Enter' && sendMessage()}
+                    onChange={(e: React.ChangeEvent<HTMLInputElement>) => setInput(e.target.value)}
+                    onKeyDown={(e: React.KeyboardEvent<HTMLInputElement>) => e.key === 'Enter' && sendMessage()}
                 />
                 <button onClick={sendMessage}>Send</button>
             </div>

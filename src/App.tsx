@@ -1,17 +1,19 @@
 import { useState } from 'react';
-import {LoadingScreen} from './components/LoadingScreen';
-import {Navbar} from './components/Navbar';
-import {MobileMenu} from './components/MobileMenu';
-import {Home} from './components/sections/Home';
-import {About} from './components/sections/About';
-import {Projects} from './components/sections/Projects';
-import {Contact} from "./components/sections/Contact.jsx";
+import type { JSX } from 'react';
+import { LoadingScreen } from './components/LoadingScreen';
+import { Navbar } from './components/Navbar';
+import { MobileMenu } from './components/MobileMenu';
+import { Home } from './components/sections/Home';
+import { About } from './components/sections/About';
+import { Projects } from './components/sections/Projects';
+import { Contact } from "./components/sections/Contact";
 import ChatWidget from './components/ChatWidget';
 import "./index.css";
 
-function App() {
-    const [isLoaded, setIsLoaded] = useState(false)
-    const [menuOpen, setMenuOpen] = useState(false)
+function App(): JSX.Element {
+    const [isLoaded, setIsLoaded] = useState<boolean>(false);
+    const [menuOpen, setMenuOpen] = useState<boolean>(false);
+    
     return (
         <>
             {!isLoaded && <LoadingScreen onComplete={() => setIsLoaded(true)}/>}{" "}
