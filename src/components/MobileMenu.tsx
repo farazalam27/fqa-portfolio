@@ -11,10 +11,10 @@ export const MobileMenu = ({ menuOpen, setMenuOpen }: MobileMenuProps): JSX.Elem
 
     useEffect(() => {
         const handleClickOutside = (event: MouseEvent | TouchEvent) => {
-            if (menuRef.current && !menuRef.current.contains(event.target as Node) && menuOpen) {
-                // Check if clicked on the menu content area (not the overlay)
+            if (menuRef.current && menuOpen) {
                 const target = event.target as HTMLElement;
-                if (!target.closest('.menu-content')) {
+                // Close menu if clicked outside the buttons (on the backdrop)
+                if (target === menuRef.current) {
                     setMenuOpen(false);
                 }
             }
@@ -50,65 +50,62 @@ export const MobileMenu = ({ menuOpen, setMenuOpen }: MobileMenuProps): JSX.Elem
                           }
                         `}
         >
+            <button
+                onClick={() => setMenuOpen(false)}
+                className="absolute top-6 right-6 text-white text-3xl focus:outline-none cursor-pointer touch-manipulation"
+                aria-label="Close Menu"
+            >
+                &times;
+            </button>
 
-            <div className="menu-content">
-                <button
-                    onClick={() => setMenuOpen(false)}
-                    className="absolute top-6 right-6 text-white text-3xl focus:outline-none cursor-pointer touch-manipulation"
-                    aria-label="Close Menu"
-                >
-                    &times;
-                </button>
-
-                <button
-                    onClick={() => handleNavClick('home')}
-                    className={`text-2xl font-semibold text-white my-4 transform transition-transform duration-300
-                                focus:outline-none cursor-pointer touch-manipulation
-                                ${menuOpen 
-                                    ? 'opacity-100 translate-y-0' 
-                                    : 'opacity-0 translate-y-5'
-                                }
-                        `}
-                >
-                    Home
-                </button>
-                <button
-                    onClick={() => handleNavClick('about')}
-                    className={`text-2xl font-semibold text-white my-4 transform transition-transform duration-300
-                                focus:outline-none cursor-pointer touch-manipulation
-                                ${menuOpen
-                                    ? 'opacity-100 translate-y-0'
-                                    : 'opacity-0 translate-y-5'
-                                }
-                        `}
-                >
-                    About
-                </button>
-                <button
-                    onClick={() => handleNavClick('projects')}
-                    className={`text-2xl font-semibold text-white my-4 transform transition-transform duration-300
-                                focus:outline-none cursor-pointer touch-manipulation
-                                ${menuOpen
-                        ? 'opacity-100 translate-y-0'
-                        : 'opacity-0 translate-y-5'
-                    }
-                        `}
-                >
-                    Projects
-                </button>
-                <button
-                    onClick={() => handleNavClick('contact')}
-                    className={`text-2xl font-semibold text-white my-4 transform transition-transform duration-300
-                                focus:outline-none cursor-pointer touch-manipulation
-                                ${menuOpen
-                        ? 'opacity-100 translate-y-0'
-                        : 'opacity-0 translate-y-5'
-                    }
-                        `}
-                >
-                    Contact
-                </button>
-            </div>
+            <button
+                onClick={() => handleNavClick('home')}
+                className={`text-2xl font-semibold text-white my-4 transform transition-transform duration-300
+                            focus:outline-none cursor-pointer touch-manipulation
+                            ${menuOpen 
+                                ? 'opacity-100 translate-y-0' 
+                                : 'opacity-0 translate-y-5'
+                            }
+                    `}
+            >
+                Home
+            </button>
+            <button
+                onClick={() => handleNavClick('about')}
+                className={`text-2xl font-semibold text-white my-4 transform transition-transform duration-300
+                            focus:outline-none cursor-pointer touch-manipulation
+                            ${menuOpen
+                                ? 'opacity-100 translate-y-0'
+                                : 'opacity-0 translate-y-5'
+                            }
+                    `}
+            >
+                About
+            </button>
+            <button
+                onClick={() => handleNavClick('projects')}
+                className={`text-2xl font-semibold text-white my-4 transform transition-transform duration-300
+                            focus:outline-none cursor-pointer touch-manipulation
+                            ${menuOpen
+                    ? 'opacity-100 translate-y-0'
+                    : 'opacity-0 translate-y-5'
+                }
+                    `}
+            >
+                Projects
+            </button>
+            <button
+                onClick={() => handleNavClick('contact')}
+                className={`text-2xl font-semibold text-white my-4 transform transition-transform duration-300
+                            focus:outline-none cursor-pointer touch-manipulation
+                            ${menuOpen
+                    ? 'opacity-100 translate-y-0'
+                    : 'opacity-0 translate-y-5'
+                }
+                    `}
+            >
+                Contact
+            </button>
         </div>
     );
 };

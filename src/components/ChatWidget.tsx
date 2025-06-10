@@ -7,7 +7,7 @@ export default function ChatWidget(): JSX.Element {
 
     return (
         <>
-            <ChatWindow className={open ? 'chat-window show' : 'chat-window'} onClose={() => setOpen(false)} />
+            {open && <ChatWindow className="chat-window show" onClose={() => setOpen(false)} />}
             <button className="chat-bubble" onClick={() => setOpen(prev => !prev)}>
                 💬
             </button>
