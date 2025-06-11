@@ -1,4 +1,4 @@
-import React, { useState, useRef, FormEvent, ChangeEvent } from "react";
+import { useState, useRef, FormEvent, ChangeEvent } from "react";
 import type { JSX } from 'react';
 import { RevealOnScroll } from "../RevealOnScroll";
 import emailjs from "emailjs-com";
