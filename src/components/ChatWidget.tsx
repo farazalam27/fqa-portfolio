@@ -7,10 +7,17 @@ export default function ChatWidget(): JSX.Element {
 
     return (
         <>
-            {open && <ChatWindow className="chat-window show" onClose={() => setOpen(false)} />}
-            <button className="chat-bubble" onClick={() => setOpen(prev => !prev)}>
-                💬
-            </button>
+            <div className={`chat-widget ${open ? 'open' : ''}`}>
+                <div className="chat-window-wrapper">
+                    <ChatWindow className="chat-window" onClose={() => setOpen(false)} />
+                </div>
+                <button 
+                    className="chat-bubble" 
+                    onClick={() => setOpen(true)}
+                >
+                    💬
+                </button>
+            </div>
         </>
     );
 }
