@@ -19,7 +19,7 @@ export const Contact = (): JSX.Element => {
     const [loading, setLoading] = useState<boolean>(false);
     const formRef = useRef<HTMLFormElement>(null);
 
-    const handleSubmit = (e: FormEvent<HTMLFormElement> | React.TouchEvent<HTMLButtonElement>): void => {
+    const handleSubmit = (e: FormEvent<HTMLFormElement>): void => {
         e.preventDefault();
         setLoading(true);
 
@@ -96,12 +96,6 @@ export const Contact = (): JSX.Element => {
                             disabled={loading}
                             className={`w-full py-3 px-6 rounded font-medium transition relative overflow-hidden 
                                         ${loading ? 'bg-gray-400 cursor-not-allowed' : 'bg-gradient-to-r from-blue-600 to-cyan-600 text-white hover:-translate-y-0.5 hover:shadow-[0_0_15px_rgba(59,130,246,0.3)] hover:from-blue-500 hover:to-cyan-500 cursor-pointer'}`}
-                            onTouchEnd={(e: React.TouchEvent<HTMLButtonElement>) => {
-                                if (!loading) {
-                                    e.preventDefault();
-                                    handleSubmit(e);
-                                }
-                            }}
                         >
                             {loading ? 'Sending...' : 'Send Message'}
                         </button>
