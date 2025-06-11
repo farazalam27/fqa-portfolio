@@ -95,7 +95,7 @@ export const Contact = (): JSX.Element => {
                             type="submit"
                             disabled={loading}
                             className={`w-full py-3 px-6 rounded font-medium transition relative overflow-hidden 
-                                        ${loading ? 'bg-gray-400 cursor-not-allowed' : 'bg-blue-500 text-white hover:-translate-y-0.5 hover:shadow-[0_0_15px_rgba(59,130,246,0.4)] cursor-pointer'}`}
+                                        ${loading ? 'bg-gray-400 cursor-not-allowed' : 'bg-gradient-to-r from-blue-600 to-cyan-600 text-white hover:-translate-y-0.5 hover:shadow-[0_0_15px_rgba(59,130,246,0.3)] hover:from-blue-500 hover:to-cyan-500 cursor-pointer'}`}
                             onTouchEnd={(e: React.TouchEvent<HTMLButtonElement>) => {
                                 if (!loading) {
                                     e.preventDefault();

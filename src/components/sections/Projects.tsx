@@ -39,7 +39,7 @@ export const Projects = (): JSX.Element => {
                             <a
                                 href="https://apps.apple.com/us/app/altcaps/id6745569694?uo=2"
                                 target="_blank"
-                                className="text-blue-400 hover:text-blue-300 transition-colors my-4 cursor-pointer"
+                                className="text-blue-400 hover:text-transparent hover:bg-gradient-to-r hover:from-blue-500 hover:to-cyan-400 hover:bg-clip-text transition-all duration-200 my-4 cursor-pointer font-medium"
                                 onClick={(e: React.MouseEvent<HTMLAnchorElement>) => {
                                     e.preventDefault();
                                     window.open("https://apps.apple.com/us/app/altcaps/id6745569694?uo=2", "_blank");
@@ -79,7 +79,7 @@ export const Projects = (): JSX.Element => {
                             <a
                                 href="https://github.com/farazalam27/spring_review"
                                 target="_blank"
-                                className="text-blue-400 hover:text-blue-300 transition-colors my-4 cursor-pointer"
+                                className="text-blue-400 hover:text-transparent hover:bg-gradient-to-r hover:from-blue-500 hover:to-cyan-400 hover:bg-clip-text transition-all duration-200 my-4 cursor-pointer font-medium"
                                 onClick={(e: React.MouseEvent<HTMLAnchorElement>) => {
                                     e.preventDefault();
                                     window.open("https://github.com/farazalam27/spring_review", "_blank");
@@ -119,7 +119,7 @@ export const Projects = (): JSX.Element => {
                             <a
                                 href="https://github.com/farazalam27/bookstore"
                                 target="_blank"
-                                className="text-blue-400 hover:text-blue-300 transition-colors my-4 cursor-pointer"
+                                className="text-blue-400 hover:text-transparent hover:bg-gradient-to-r hover:from-blue-500 hover:to-cyan-400 hover:bg-clip-text transition-all duration-200 my-4 cursor-pointer font-medium"
                                 onClick={(e: React.MouseEvent<HTMLAnchorElement>) => {
                                     e.preventDefault();
                                     window.open("https://github.com/farazalam27/bookstore", "_blank");

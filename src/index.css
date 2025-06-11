@@ -54,7 +54,7 @@ html, body {
 }
 
 .chat-bubble {
-    background: #2563eb;
+    background: linear-gradient(135deg, #2563eb 0%, #0891b2 100%);
     color: white;
     border: none;
     border-radius: 50%;
@@ -62,14 +62,15 @@ html, body {
     height: 60px;
     font-size: 24px;
     cursor: pointer;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.25);
     transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
     transform-origin: center;
 }
 
 .chat-bubble:hover {
     transform: scale(1.1);
-    box-shadow: 0 6px 16px rgba(0,0,0,0.4);
+    box-shadow: 0 6px 20px rgba(37, 99, 235, 0.35);
+    background: linear-gradient(135deg, #3b82f6 0%, #06b6d4 100%);
 }
 
 .chat-widget.open .chat-bubble {
@@ -111,7 +112,7 @@ html, body {
 }
 
 .chat-header {
-    background: #2563eb;
+    background: linear-gradient(135deg, #2563eb 0%, #0891b2 100%);
     padding: 10px;
     display: flex;
     justify-content: space-between;
@@ -133,7 +134,7 @@ html, body {
 }
 
 .message.user {
-    background: #2563eb;
+    background: linear-gradient(135deg, #2563eb 0%, #0891b2 100%);
     align-self: flex-end;
 }
 
@@ -159,10 +160,17 @@ html, body {
 
 .chat-input button {
     margin-left: 8px;
-    background: #2563eb;
+    background: linear-gradient(135deg, #2563eb 0%, #0891b2 100%);
     color: white;
     border: none;
     padding: 8px 12px;
     border-radius: 5px;
     cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.chat-input button:hover {
+    box-shadow: 0 2px 8px rgba(37, 99, 235, 0.25);
+    transform: translateY(-1px);
+    background: linear-gradient(135deg, #3b82f6 0%, #06b6d4 100%);
 }

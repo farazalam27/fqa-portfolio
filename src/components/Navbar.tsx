@@ -18,7 +18,7 @@ export const Navbar = ({ menuOpen, setMenuOpen }: NavbarProps): JSX.Element => {
                     <div className="flex items-center">
                         <a href="#home" className="font-mono text-xl font-bold text-white">
                             {" "}
-                            fqa<span className="text-blue-500">.info</span>{" "}
+                            fqa<span className="text-blue-600">.info</span>{" "}
                         </a>
                         <div className="flex ml-4 space-x-3">
                             <a href="https://www.linkedin.com/in/fqalam" target="_blank" rel="noopener noreferrer" className="text-gray-300 hover:text-white transition-colors">
@@ -43,25 +43,25 @@ export const Navbar = ({ menuOpen, setMenuOpen }: NavbarProps): JSX.Element => {
                     <div className="hidden md:flex items-center space-x-8">
                         <a
                             href="#home"
-                            className="text-gray-300 hover:text-white transition-colors"
+                            className="text-gray-300 hover:text-transparent hover:bg-gradient-to-r hover:from-blue-500 hover:to-cyan-400 hover:bg-clip-text font-medium transition-all duration-200"
                         >
                             Home
                         </a>
                         <a
                             href="#about"
-                            className="text-gray-300 hover:text-white transition-colors"
+                            className="text-gray-300 hover:text-transparent hover:bg-gradient-to-r hover:from-blue-500 hover:to-cyan-400 hover:bg-clip-text font-medium transition-all duration-200"
                         >
                             About
                         </a>
                         <a
                             href="#projects"
-                            className="text-gray-300 hover:text-white transition-colors"
+                            className="text-gray-300 hover:text-transparent hover:bg-gradient-to-r hover:from-blue-500 hover:to-cyan-400 hover:bg-clip-text font-medium transition-all duration-200"
                         >
                             Projects
                         </a>
                         <a
                             href="#contact"
-                            className="text-gray-300 hover:text-white transition-colors"
+                            className="text-gray-300 hover:text-transparent hover:bg-gradient-to-r hover:from-blue-500 hover:to-cyan-400 hover:bg-clip-text font-medium transition-all duration-200"
                         >
                             Contact
                         </a>
