@@ -13,9 +13,9 @@ export const Home = (): JSX.Element => {
                     Hi, I'm Faraz
                 </h1>
                 <p className="text-gray-400 text-lg mb-8 max-w-2xl mx-auto">
-                    I'm a backend developer who builds scalable systems that Fortune 500 companies rely on. Over the past 4 years,
-                    I've architected microservices in Java and Go and designed cloud solutions on AWS that handle millions of requests.
-                    I specialize in turning complex business challenges into robust, maintainable code that performs under pressure.
+                    I'm a Full Stack Engineer with 3+ years of experience building scalable enterprise applications across multiple languages
+                    and cloud platforms. From high-performance Go microservices to React frontends, Java Spring Boot APIs to iOS apps with ML,
+                    I've delivered end-to-end solutions for Fortune 500 clients that handle millions of requests and secure sensitive data.
                 </p>
                 <div className="flex justify-center space-x-4">
                     <button

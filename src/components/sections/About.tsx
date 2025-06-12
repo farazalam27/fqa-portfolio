@@ -2,10 +2,10 @@ import { RevealOnScroll } from "../RevealOnScroll";
 import type { JSX } from 'react';
 
 export const About = (): JSX.Element => {
-    const languages: string[] = ["Java", "Python", "Golang", "Kotlin", "JavaScript", "TypeScript", "Swift", "C++", "SQL"];
-    const frameworks: string[] = ["Spring Boot", "React", "Node.js", "JUnit"];
-    const databases: string[] = ["PostgreSQL", "MongoDB", "SQLite", "DynamoDB"];
-    const tools: string[] = ["Docker", "Kubernetes", "Jenkins", "Maven", "Gradle", "AWS", "Postman", "JIRA"];
+    const languages: string[] = ["JavaScript", "TypeScript", "Java", "Go", "Kotlin", "Swift", "Python", "SQL"];
+    const frameworks: string[] = ["React", "Next.js", "Node.js", "Express.js", "Spring Boot", "Tailwind CSS", "Bootstrap"];
+    const databases: string[] = ["PostgreSQL", "MongoDB", "SQLite", "DynamoDB", "RDS"];
+    const tools: string[] = ["AWS", "Lambda", "S3", "EC2", "Docker", "Kubernetes", "Jenkins", "Serverless", "Git", "Maven", "Gradle", "Postman", "JIRA"];
     const certifications: string[] = ["AWS Solutions Architect Associate", "AWS Developer Associate"];
 
     return (
@@ -112,47 +112,57 @@ export const About = (): JSX.Element => {
                         <h3 className="text-xl font-bold mb-4">💼 Work Experience</h3>
                         <div className="space-y-6 text-gray-300">
                             <div>
-                                <h4 className="font-semibold text-white text-lg">Back-End Developer</h4>
+                                <h4 className="font-semibold text-white text-lg">Full Stack Developer</h4>
                                 <div className="text-blue-400 mb-2">CapTech • Reston, VA • September 2020 - December 2023</div>
                                 
                                 <div className="space-y-4">
                                     <div>
-                                        <h5 className="font-medium text-gray-200 mb-2">Fortune 500 Gas Transmission & Storage Company</h5>
+                                        <h5 className="font-medium text-gray-200 mb-2">Fortune 500 Hospitality and Tourism Company</h5>
                                         <ul className="list-disc list-inside space-y-1 text-sm ml-4">
-                                            <li>Upgraded and migrated backend Java APIs to support new platform transition</li>
-                                            <li>Refactored Java microservices using Spring Boot for seamless integration</li>
-                                            <li>Implemented MongoDB for efficient data storage and retrieval</li>
-                                            <li>Applied JUnit 5 and Mockito for test-driven development (TDD)</li>
+                                            <li>Built high-performance iOS application with facial recognition authentication using TensorFlow ML models</li>
+                                            <li>Integrated AWS Lambda for real-time data handling and AWS SNS for remote notifications</li>
+                                            <li>Implemented AWS KMS encryption to secure customer data in DynamoDB with fine-grained access control</li>
+                                            <li>Applied JUnit 5 and Mockito for test-driven development (TDD) with automated test execution</li>
                                         </ul>
                                     </div>
                                     
                                     <div>
                                         <h5 className="font-medium text-gray-200 mb-2">Fortune 500 Banking Card Company</h5>
                                         <ul className="list-disc list-inside space-y-1 text-sm ml-4">
-                                            <li>Developed high-performance Go microservices for secured card platform</li>
-                                            <li>Built Go handlers reducing latency by up to 20% through optimized APIs</li>
-                                            <li>Leveraged Goqu for PostgreSQL database queries</li>
-                                            <li>Implemented Jenkins and Maven pipelines for automated deployments</li>
+                                            <li>Developed high-performance Go microservices for secured card platform, integrating with existing Java APIs</li>
+                                            <li>Built Go handlers reducing latency by up to 20% through optimized API interactions</li>
+                                            <li>Leveraged Goqu for PostgreSQL database queries and seamless data retrieval</li>
+                                            <li>Implemented Jenkins and Maven pipelines for automated builds, testing, and deployments</li>
                                         </ul>
                                     </div>
                                     
                                     <div>
                                         <h5 className="font-medium text-gray-200 mb-2">PGA Tour</h5>
                                         <ul className="list-disc list-inside space-y-1 text-sm ml-4">
-                                            <li>Developed Kotlin-based API endpoints for PGA Tour Shotlander application</li>
-                                            <li>Refactored Java endpoints to Kotlin for improved code safety</li>
-                                            <li>Monitored PostgreSQL database modifications using pgAdmin</li>
-                                            <li>Used Postman and Cucumber for rigorous API testing</li>
+                                            <li>Developed and optimized Kotlin-based API endpoints for PGA Tour Shotlander application</li>
+                                            <li>Refactored Java endpoints to Kotlin, improving code safety and reliability</li>
+                                            <li>Monitored PostgreSQL database modifications using pgAdmin for seamless backend integration</li>
+                                            <li>Used Postman and Cucumber for rigorous API testing with Gradle for build automation</li>
                                         </ul>
                                     </div>
                                     
                                     <div>
-                                        <h5 className="font-medium text-gray-200 mb-2">Fortune 500 Hospitality & Tourism Company</h5>
+                                        <h5 className="font-medium text-gray-200 mb-2">Fortune 500 Gas Transmission & Storage Company</h5>
                                         <ul className="list-disc list-inside space-y-1 text-sm ml-4">
-                                            <li>Contributed to customer-facing iOS app with secure facial recognition</li>
-                                            <li>Built iOS app with TensorFlow ML models and AWS Lambda integration</li>
-                                            <li>Implemented AWS SNS for remote notifications</li>
-                                            <li>Used AWS KMS encryption to secure customer data in DynamoDB</li>
+                                            <li>Upgraded and migrated backend Java APIs to support transition to new platform</li>
+                                            <li>Refactored and modernized Java-based microservices using Spring Boot</li>
+                                            <li>Implemented MongoDB for efficient data storage, retrieval, and management</li>
+                                            <li>Applied JUnit 5 and Mockito for test-driven development (TDD) with automated test execution</li>
+                                        </ul>
+                                    </div>
+                                    
+                                    <div>
+                                        <h5 className="font-medium text-gray-200 mb-2">Fortune 100 Hospitality and Tourism Company</h5>
+                                        <ul className="list-disc list-inside space-y-1 text-sm ml-4">
+                                            <li>Redesigned GRC workflows in ServiceNow to streamline audit and risk tracking processes</li>
+                                            <li>Developed client-side and server-side JavaScript scripts to automate assessments</li>
+                                            <li>Enhanced PDF generation functionality using ServiceNow's scripting APIs</li>
+                                            <li>Implemented automated email notifications for compliance updates and milestone alerts</li>
                                         </ul>
                                     </div>
                                 </div>
