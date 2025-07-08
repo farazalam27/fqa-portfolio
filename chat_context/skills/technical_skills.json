@@ -1,0 +1,36 @@
+{
+  "languages": [
+    "Java",
+    "Python",
+    "JavaScript",
+    "TypeScript",
+    "Go/Golang",
+    "Kotlin",
+    "Swift",
+    "SQL"
+  ],
+  "frameworks": {
+    "frontend": ["React", "Next.js", "Vue"],
+    "backend": ["Spring Boot", "Node.js", "Express.js", "FastAPI", "Django"],
+    "mobile": ["React Native", "iOS (Swift)"],
+    "data": ["PySpark", "TensorFlow"]
+  },
+  "databases": ["PostgreSQL", "MongoDB", "Redis", "DynamoDB", "RDS", "SQLite"],
+  "cloud_services": {
+    "aws": ["Lambda", "S3", "EC2", "KMS", "SNS", "DynamoDB", "RDS"],
+    "deployment": ["Docker", "Kubernetes", "Serverless"]
+  },
+  "tools": ["Git", "Jenkins", "Maven", "Gradle", "Postman", "JIRA", "ServiceNow", "pgAdmin"],
+  "certifications": [
+    "AWS Solutions Architect Associate",
+    "AWS Developer Associate"
+  ],
+  "specializations": [
+    "Full-stack development",
+    "Microservices architecture",
+    "Performance optimization",
+    "Machine Learning integration",
+    "iOS development",
+    "Test-driven development (TDD)"
+  ]
+}
