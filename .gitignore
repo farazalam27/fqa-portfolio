@@ -13,6 +13,8 @@ dist-ssr
 *.local
 
 .env
+.env.local
+.env.production
 CLAUDE.md
 
 # Editor directories and files
@@ -25,3 +27,13 @@ CLAUDE.md
 *.njsproj
 *.sln
 *.sw?
+
+# Chat context - sensitive files
+chat_context/resume/*.pdf
+chat_context/personal/spotify_recommendations.json
+scripts/.ollama.pid
+scripts/.ngrok.pid
+scripts/.cloudflare.pid
+scripts/.ngrok.url
+scripts/ngrok.log
+scripts/cloudflare.log

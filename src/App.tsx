@@ -8,11 +8,26 @@ import { About } from './components/sections/About';
 import { Projects } from './components/sections/Projects';
 import { Contact } from "./components/sections/Contact";
 import ChatWidget from './components/ChatWidget';
+import OAuthCallback from './components/OAuthCallback';
 import "./index.css";
 
 function App(): JSX.Element {
     const [isLoaded, setIsLoaded] = useState<boolean>(false);
     const [menuOpen, setMenuOpen] = useState<boolean>(false);
+    
+    // Check if this is an OAuth callback
+    const pathname = window.location.pathname;
+    const isSpotifyCallback = pathname === '/spotify-callback';
+    const isMALCallback = pathname === '/mal-callback';
+    
+    // Handle OAuth callbacks
+    if (isSpotifyCallback) {
+        return <OAuthCallback service="spotify" />;
+    }
+    
+    if (isMALCallback) {
+        return <OAuthCallback service="mal" />;
+    }
     
     return (
         <>
