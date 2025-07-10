@@ -165,12 +165,12 @@ export class SpotifyService {
       localStorage.removeItem(this.codeVerifierKey);
       localStorage.removeItem(this.stateKey);
 
-      apiUsageTracker.trackRequest('spotify', true, Date.now() - Date.now(), 0);
+      apiUsageTracker.recordRequest(true, Date.now() - Date.now(), 0);
       
       return true;
     } catch (error) {
       console.error('Error handling Spotify callback:', error);
-      apiUsageTracker.trackRequest('spotify', false, Date.now() - Date.now(), 0, error as Error);
+      apiUsageTracker.recordRequest(false, Date.now() - Date.now(), 0, (error as Error).message);
       return false;
     }
   }
@@ -277,10 +277,10 @@ export class SpotifyService {
       }
 
       const data = await response.json();
-      apiUsageTracker.trackRequest('spotify', true, Date.now() - startTime, 1);
+      apiUsageTracker.recordRequest(true, Date.now() - startTime, 1);
       return data;
     } catch (error) {
-      apiUsageTracker.trackRequest('spotify', false, Date.now() - startTime, 0, error as Error);
+      apiUsageTracker.recordRequest(false, Date.now() - startTime, 0, (error as Error).message);
       console.error('Spotify API request failed:', error);
       return null;
     }

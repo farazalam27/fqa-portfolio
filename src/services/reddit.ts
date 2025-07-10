@@ -37,7 +37,7 @@ interface RedditListing {
   };
 }
 
-type SortType = 'hot' | 'new' | 'top' | 'rising';
+type SortType = 'hot' | 'new' | 'top' | 'rising' | 'relevance';
 type TimeFilter = 'hour' | 'day' | 'week' | 'month' | 'year' | 'all';
 
 interface SearchOptions {
@@ -153,10 +153,10 @@ export class RedditService {
       }
 
       const data = await response.json();
-      apiUsageTracker.trackRequest('reddit', true, Date.now() - startTime, 1);
+      apiUsageTracker.recordRequest(true, Date.now() - startTime, 1);
       return data;
     } catch (error) {
-      apiUsageTracker.trackRequest('reddit', false, Date.now() - startTime, 0, error as Error);
+      apiUsageTracker.recordRequest(false, Date.now() - startTime, 0, (error as Error).message);
       console.error('Reddit API request failed:', error);
       return null;
     }

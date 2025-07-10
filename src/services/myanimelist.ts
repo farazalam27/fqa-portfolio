@@ -171,12 +171,12 @@ export class MyAnimeListService {
       localStorage.removeItem(this.codeVerifierKey);
       localStorage.removeItem(this.stateKey);
 
-      apiUsageTracker.trackRequest('myanimelist', true, Date.now() - Date.now(), 0);
+      apiUsageTracker.recordRequest(true, Date.now() - Date.now(), 0);
       
       return true;
     } catch (error) {
       console.error('Error handling MAL callback:', error);
-      apiUsageTracker.trackRequest('myanimelist', false, Date.now() - Date.now(), 0, error as Error);
+      apiUsageTracker.recordRequest(false, Date.now() - Date.now(), 0, (error as Error).message);
       return false;
     }
   }
@@ -314,10 +314,10 @@ export class MyAnimeListService {
       }
 
       const data = await response.json();
-      apiUsageTracker.trackRequest('myanimelist', true, Date.now() - startTime, 1);
+      apiUsageTracker.recordRequest(true, Date.now() - startTime, 1);
       return data;
     } catch (error) {
-      apiUsageTracker.trackRequest('myanimelist', false, Date.now() - startTime, 0, error as Error);
+      apiUsageTracker.recordRequest(false, Date.now() - startTime, 0, (error as Error).message);
       console.error('MAL API request failed:', error);
       return null;
     }
