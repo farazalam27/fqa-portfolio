@@ -381,7 +381,7 @@ export default function ChatWindow({ onClose, className }: ChatWindowProps): JSX
                 content: input 
             }, {
                 role: 'assistant' as const,
-                content: "Sorry I'm unavailable right now because Faraz is too cheap to keep me running 24/7 :P\n\nBut I can still help with:\n• Spotify data (if connected)\n• Anime list (if connected)\n• One Piece theories from Reddit\n\nTry asking 'What are the latest One Piece theories?'"
+                content: "Sorry I'm unavailable right now because Faraz is too cheap to keep me running 24/7 :P"
             }]);
             setInput('');
             return;
@@ -450,7 +450,7 @@ export default function ChatWindow({ onClose, className }: ChatWindowProps): JSX
                 // Check if it's a connection error to Ollama
                 if (err.message.includes('Failed to fetch') || err.code === 'NETWORK_ERROR') {
                     setOllamaOffline(true);
-                    errorMessage = "Sorry I'm unavailable right now because Faraz is too cheap to keep me running 24/7 :P\n\nBut I can still help with:\n• Spotify data (if connected)\n• Anime list (if connected)\n• One Piece theories from Reddit";
+                    errorMessage = "Sorry I'm unavailable right now because Faraz is too cheap to keep me running 24/7 :P";
                 } else {
                     errorMessage = err.message;
                 }
