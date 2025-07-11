@@ -1,55 +1,44 @@
-# Ollama Chat Setup (Simplified)
+# Portfolio Scripts
 
-This directory contains simple utilities for managing your chat context.
+This directory contains utility scripts for managing the portfolio application.
 
-## Setup
+## Available Scripts
 
-1. **Install Ollama**:
-   ```bash
-   brew install --cask ollama
-   ```
+### deploy-fresh.sh
+Performs a fresh deployment to GitHub Pages:
+```bash
+./deploy-fresh.sh
+```
 
-2. **Pull the llama3.2 model** (better than mistral):
-   ```bash
-   ollama pull llama3.2
-   ```
+This script:
+- Builds the production version
+- Deploys to GitHub Pages
+- Ensures CNAME file is included for custom domain
 
-3. **Start Ollama**:
-   ```bash
-   ollama serve
-   ```
-
-4. **Configure your portfolio**:
-   - By default, the chat uses `http://localhost:11434`
-   - To expose Ollama on your network:
-     1. Open Ollama app settings
-     2. Enable network access
-     3. Update `.env.local` with your IP:
-        ```
-        VITE_OLLAMA_URL=http://YOUR_IP:11434
-        ```
-
-## How It Works
-
-- When Ollama is running locally, the chatbot uses llama3.2 model
-- If Ollama is offline, the chat shows mock responses
-- All context files in `chat_context/` are loaded automatically
-
-## Updating Context
-
-Use the `update-context.sh` script to easily manage your chat context files:
+### update-context.sh
+Updates chat context files:
 ```bash
 ./update-context.sh
 ```
 
-## Testing
+This interactive script helps you:
+- Update resume information
+- Modify technical skills
+- Update personal interests (anime, music)
+- Manage chat context data
 
-1. Make sure Ollama is running: `ollama serve`
-2. Start dev server: `npm run dev`
-3. Visit http://localhost:5173
-4. Click the chat bubble and test!
+## Production Deployment
 
-The AI now has context about your:
-- Professional experience (Java, Spring Boot, Python, PySpark, AWS)
-- Projects and technical skills
-- Personal interests (anime, music)
+The portfolio uses environment-based configuration for the chat system:
+
+1. Copy `.env.production.example` to `.env.production`
+2. Configure your preferred chat API (OpenAI, Claude, or custom)
+3. Run `npm run deploy` to deploy to GitHub Pages
+
+## Chat Context Files
+
+The AI assistant uses context files from `/chat_context/`:
+- `resume/resume_text.json` - Professional experience
+- `skills/technical_skills.json` - Technical capabilities
+- `personal/anime_recommendations.json` - Anime preferences
+- `personal/spotify_recommendations.json` - Music preferences

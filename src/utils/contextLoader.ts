@@ -286,11 +286,23 @@ export class ContextLoader {
 
         // Add live data to context
         if (this.context.liveSpotify) {
+            prompt += `\nLive Spotify Data:\n`;
             if (this.context.liveSpotify.currentlyPlaying) {
-                prompt += `- Currently listening to: ${this.context.liveSpotify.currentlyPlaying}\n`;
+                prompt += `- Currently playing: ${this.context.liveSpotify.currentlyPlaying}\n`;
+            } else {
+                prompt += `- Not currently playing anything\n`;
+            }
+            if (this.context.liveSpotify.topTracks?.length) {
+                prompt += `- Top tracks (last 4 weeks):\n`;
+                this.context.liveSpotify.topTracks.slice(0, 5).forEach((track, i) => {
+                    prompt += `  ${i + 1}. ${track}\n`;
+                });
             }
             if (this.context.liveSpotify.topArtists?.length) {
-                prompt += `- Recent top artists: ${this.context.liveSpotify.topArtists.slice(0, 3).join(', ')}\n`;
+                prompt += `- Top artists (last 4 weeks):\n`;
+                this.context.liveSpotify.topArtists.slice(0, 5).forEach((artist, i) => {
+                    prompt += `  ${i + 1}. ${artist}\n`;
+                });
             }
         }
 
@@ -312,7 +324,28 @@ export class ContextLoader {
         }
 
         prompt += `\nIMPORTANT: You are speaking AS Faraz's AI assistant on his portfolio website. Be friendly and professional. When asked about skills or experience, reference Faraz's actual background from the context provided above. Emphasize his expertise in Java, Spring Boot, Python, PySpark, Go, AWS, and enterprise development.\n\n`;
-        prompt += `You can also fetch live data about Faraz's Spotify listening habits, anime watching list, and the latest One Piece theories from Reddit when asked.\n\n`;
+        
+        // Add API availability status
+        prompt += `API Connection Status:\n`;
+        if (this.context.liveSpotify) {
+            prompt += `- Spotify: Connected (you have access to current playing, top tracks, and top artists)\n`;
+        } else {
+            prompt += `- Spotify: Not connected (suggest clicking ⚙️ button to connect)\n`;
+        }
+        
+        if (this.context.liveAnime) {
+            prompt += `- MyAnimeList: Connected (you have access to watching and completed anime)\n`;
+        } else {
+            prompt += `- MyAnimeList: Not connected (suggest clicking ⚙️ button to connect)\n`;
+        }
+        
+        prompt += `- Reddit: Always available (you can fetch One Piece theories anytime)\n\n`;
+        
+        prompt += `When users ask about Spotify, anime, or Reddit data:\n`;
+        prompt += `- If connected: Use the live data provided in the context above\n`;
+        prompt += `- If not connected: Suggest they connect via the ⚙️ settings button\n`;
+        prompt += `- For Reddit: You can mention you can fetch the latest theories\n\n`;
+        
         prompt += `User question: `;
         
         return prompt;
