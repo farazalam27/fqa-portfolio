@@ -267,34 +267,54 @@ export class ApiClient {
         const lastUserMessage = request.messages.filter(m => m.role === 'user').pop()?.content || '';
         const prompt = systemMessage ? `${systemMessage}\n\nUser: ${lastUserMessage}` : lastUserMessage;
 
-        const response = await fetch(`${this.config.baseUrl}/api/generate`, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                model: this.config.model || 'llama3.2',
-                prompt: prompt,
-                stream: false,
-                options: {
-                    temperature: request.temperature ?? 0.7,
-                    num_predict: request.max_tokens ?? 500
-                }
-            }),
-            signal: this.abortController?.signal
-        });
+        try {
+            const response = await fetch(`${this.config.baseUrl}/api/generate`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    model: this.config.model || 'llama3.2',
+                    prompt: prompt,
+                    stream: false,
+                    options: {
+                        temperature: request.temperature ?? 0.7,
+                        num_predict: request.max_tokens ?? 500
+                    }
+                }),
+                signal: this.abortController?.signal
+            });
 
-        if (!response.ok) {
-            throw new ApiError(
-                `Ollama API error: ${response.statusText}`,
-                response.status
-            );
+            if (!response.ok) {
+                throw new ApiError(
+                    `Ollama API error: ${response.statusText}`,
+                    response.status
+                );
+            }
+
+            const data = await response.json();
+            return {
+                content: data.response || ''
+            };
+        } catch (error) {
+            // Check if it's a network error
+            if (error instanceof TypeError && error.message.includes('Failed to fetch')) {
+                throw new ApiError(
+                    'Failed to connect to Ollama. Make sure it is running.',
+                    undefined,
+                    'NETWORK_ERROR'
+                );
+            }
+            // Check if it's an abort error
+            if (error instanceof Error && error.name === 'AbortError') {
+                throw new ApiError(
+                    'Request timeout - Ollama might be offline.',
+                    undefined,
+                    'NETWORK_ERROR'
+                );
+            }
+            throw error;
         }
-
-        const data = await response.json();
-        return {
-            content: data.response || ''
-        };
     }
 
     private async customRequest(request: ChatCompletionRequest): Promise<ChatCompletionResponse> {

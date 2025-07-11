@@ -34,6 +34,7 @@ export default function ChatWindow({ onClose, className }: ChatWindowProps): JSX
     const [loading, setLoading] = useState<boolean>(false);
     const [messageCount, setMessageCount] = useState<number>(0);
     const [contextPrompt, setContextPrompt] = useState<string>('');
+    const [ollamaOffline, setOllamaOffline] = useState<boolean>(false);
     
     // API client reference
     const apiClientRef = useRef<ApiClient | null>(null);
@@ -48,6 +49,20 @@ export default function ChatWindow({ onClose, className }: ChatWindowProps): JSX
                 console.warn('API client could not be created. Check your environment configuration.');
             }
             apiClientRef.current = client;
+            
+            // Check if Ollama is available (only in production)
+            if (client && import.meta.env.MODE === 'production') {
+                try {
+                    // Test connection with a simple request
+                    await client.chatCompletion({
+                        messages: [{ role: 'user', content: 'test' }],
+                        max_tokens: 1
+                    });
+                } catch {
+                    console.log('Ollama appears to be offline');
+                    setOllamaOffline(true);
+                }
+            }
             
             // Load context
             await contextLoader.loadContext();
@@ -360,13 +375,13 @@ export default function ChatWindow({ onClose, className }: ChatWindowProps): JSX
     const sendMessage = async (): Promise<void> => {
         if (!input.trim()) return;
         
-        if (!apiClientRef.current) {
+        if (!apiClientRef.current || ollamaOffline) {
             setMessages([...messages, { 
                 role: 'user' as const, 
                 content: input 
             }, {
                 role: 'assistant' as const,
-                content: 'The chat API is not configured. For now, I can only respond to Spotify, anime, and One Piece theory queries. Try asking "What are the latest One Piece theories?" to test the Reddit integration!'
+                content: "Sorry I'm unavailable right now because Faraz is too cheap to keep me running 24/7 :P\n\nBut I can still help with:\n• Spotify data (if connected)\n• Anime list (if connected)\n• One Piece theories from Reddit\n\nTry asking 'What are the latest One Piece theories?'"
             }]);
             setInput('');
             return;
@@ -432,7 +447,13 @@ export default function ChatWindow({ onClose, className }: ChatWindowProps): JSX
             if (err instanceof RateLimitError) {
                 errorMessage = 'I\'m receiving too many requests right now. Please wait a moment and try again.';
             } else if (err instanceof ApiError) {
-                errorMessage = err.message;
+                // Check if it's a connection error to Ollama
+                if (err.message.includes('Failed to fetch') || err.code === 'NETWORK_ERROR') {
+                    setOllamaOffline(true);
+                    errorMessage = "Sorry I'm unavailable right now because Faraz is too cheap to keep me running 24/7 :P\n\nBut I can still help with:\n• Spotify data (if connected)\n• Anime list (if connected)\n• One Piece theories from Reddit";
+                } else {
+                    errorMessage = err.message;
+                }
             }
             
             setMessages([...newMessages, {

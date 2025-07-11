@@ -47,14 +47,13 @@ const configs: Record<string, ApiEnvironmentConfig> = {
         }
     },
     production: {
-        provider: import.meta.env.VITE_USE_OPENAI === 'true' ? 'openai' : 'custom',
-        baseUrl: import.meta.env.VITE_CHAT_API_URL || 'https://api.openai.com/v1',
-        apiKey: import.meta.env.VITE_CHAT_API_KEY,
-        model: import.meta.env.VITE_MODEL || 'gpt-3.5-turbo',
+        provider: 'ollama',
+        baseUrl: import.meta.env.VITE_OLLAMA_URL || 'http://localhost:11434',
+        model: 'llama3.2',
         maxRetries: 3,
         timeout: 60000,
         rateLimit: {
-            maxRequests: 20,
+            maxRequests: 30,
             windowMs: 60000
         }
     }
