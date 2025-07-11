@@ -15,7 +15,7 @@ dist-ssr
 .env
 .env.local
 .env.development
-.env.production
+# .env.production is needed for deployment - contains only public client IDs
 CLAUDE.md
 
 # Editor directories and files
