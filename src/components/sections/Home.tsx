@@ -14,7 +14,7 @@ export const Home = (): JSX.Element => {
                 </h1>
                 <p className="text-gray-400 text-lg mb-8 max-w-2xl mx-auto">
                     I'm a Full Stack Engineer with 3+ years of experience building scalable enterprise applications across multiple languages
-                    and cloud platforms. From high-performance Go microservices to React frontends, Java Spring Boot APIs to iOS apps with ML,
+                    and cloud platforms. From high-performance Go microservices to React and Angular frontends, Java Spring Boot APIs to iOS apps with ML,
                     I've delivered end-to-end solutions for Fortune 500 clients that handle millions of requests and secure sensitive data.
                 </p>
                 <div className="flex justify-center space-x-4">

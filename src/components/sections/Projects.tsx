@@ -19,11 +19,11 @@ export const Projects = (): JSX.Element => {
                         <h3 className="text-xl font-bold mb-2">Daniel's Mechanic Shop</h3>
                         <p className="text-gray-400 mb-4">
                             A full-stack mechanic shop management system featuring customer appointment scheduling, 
-                            admin dashboard, and time slot management. Built with React frontend, Express.js backend, 
+                            admin dashboard, and time slot management. Built with Angular frontend, Express.js backend,
                             and MongoDB database with real authentication and production deployment.
                         </p>
                         <div className="flex flex-wrap gap-2 mb-4">
-                            {["React", "TypeScript", "Express.js", "MongoDB", "Bootstrap"].map((tech, key) => (
+                            {["Angular", "TypeScript", "Express.js", "MongoDB", "Bootstrap"].map((tech, key) => (
                                 <span
                                     key={key}
                                     className="bg-blue-500/10 text-blue-500 py-1 px-3 rounded-full text-sm hover:bg-blue-500/20

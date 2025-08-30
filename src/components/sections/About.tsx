@@ -3,7 +3,7 @@ import type { JSX } from 'react';
 
 export const About = (): JSX.Element => {
     const languages: string[] = ["JavaScript", "TypeScript", "Java", "Go", "Kotlin", "Swift", "Python", "SQL"];
-    const frameworks: string[] = ["React", "Next.js", "Node.js", "Express.js", "Spring Boot", "Tailwind CSS", "Bootstrap"];
+    const frameworks: string[] = ["Angular", "React", "Next.js", "Node.js", "Express.js", "Spring Boot", "Tailwind CSS", "Bootstrap"];
     const databases: string[] = ["PostgreSQL", "MongoDB", "SQLite", "DynamoDB", "RDS"];
     const tools: string[] = ["AWS", "Lambda", "S3", "EC2", "Docker", "Kubernetes", "Jenkins", "Serverless", "Git", "Maven", "Gradle", "Postman", "JIRA"];
     const certifications: string[] = ["AWS Solutions Architect Associate", "AWS Developer Associate"];
