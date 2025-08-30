@@ -26,7 +26,7 @@ const configs: Record<string, ApiEnvironmentConfig> = {
     development: {
         provider: 'ollama',
         baseUrl: import.meta.env.VITE_OLLAMA_URL || 'http://localhost:11434',
-        model: 'llama3.2',
+        model: 'deepseek-coder:6.7b',
         maxRetries: 3,
         timeout: 30000,
         rateLimit: {
@@ -49,7 +49,7 @@ const configs: Record<string, ApiEnvironmentConfig> = {
     production: {
         provider: 'ollama',
         baseUrl: import.meta.env.VITE_OLLAMA_URL || 'http://localhost:11434',
-        model: 'llama3.2',
+        model: 'deepseek-coder:6.7b',
         maxRetries: 3,
         timeout: 60000,
         rateLimit: {

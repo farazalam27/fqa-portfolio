@@ -4,8 +4,6 @@ import { contextLoader } from '../utils/contextLoader';
 import { createApiClient, ApiClient, ApiError, RateLimitError, ChatMessage } from '../utils/api';
 import { spotifyService } from '../services/spotify';
 import { malService } from '../services/myanimelist';
-import { redditService } from '../services/reddit';
-import ChatSettings from './ChatSettings';
 
 interface ChatWindowProps {
     onClose: () => void;
@@ -28,11 +26,7 @@ export default function ChatWindow({ onClose, className }: ChatWindowProps): JSX
     const [input, setInput] = useState<string>('');
     const [loading, setLoading] = useState<boolean>(false);
     const [messageCount, setMessageCount] = useState<number>(0);
-    const [contextPrompt, setContextPrompt] = useState<string>('');
     const [ollamaOffline, setOllamaOffline] = useState<boolean>(false);
-    const [showSettings, setShowSettings] = useState<boolean>(false);
-    const [spotifyConnected, setSpotifyConnected] = useState<boolean>(false);
-    const [malConnected, setMalConnected] = useState<boolean>(false);
     
     // API client reference
     const apiClientRef = useRef<ApiClient | null>(null);
@@ -64,11 +58,10 @@ export default function ChatWindow({ onClose, className }: ChatWindowProps): JSX
             
             // Load context
             await contextLoader.loadContext();
-            setContextPrompt(contextLoader.getContextPrompt());
             
-            // Check API authentication status
-            setSpotifyConnected(spotifyService.isAuthenticated());
-            setMalConnected(malService.isAuthenticated());
+            // Try to authenticate APIs from stored tokens
+            await spotifyService.refreshToken().catch(() => {});
+            await malService.refreshToken().catch(() => {});
         };
         initializeChat();
         
@@ -78,17 +71,6 @@ export default function ChatWindow({ onClose, className }: ChatWindowProps): JSX
         };
     }, []);
     
-    // Update authentication status when settings close
-    useEffect(() => {
-        if (!showSettings) {
-            setSpotifyConnected(spotifyService.isAuthenticated());
-            setMalConnected(malService.isAuthenticated());
-            // Reload context to get fresh data if newly authenticated
-            contextLoader.loadContext(true).then(() => {
-                setContextPrompt(contextLoader.getContextPrompt());
-            });
-        }
-    }, [showSettings]);
 
     const sendMessage = async (): Promise<void> => {
         if (!input.trim()) return;
@@ -122,18 +104,33 @@ export default function ChatWindow({ onClose, className }: ChatWindowProps): JSX
         setMessageCount(messageCount + 1);
 
         try {
+            // Detect if we need to fetch live API data
+            console.log('[ChatWindow] User query:', input);
+            await contextLoader.fetchLiveDataForQuery(input);
+            
+            // Get updated context with live data
+            const updatedContextPrompt = contextLoader.getContextPrompt(input);
+        console.log('[ChatWindow] Context prompt length:', updatedContextPrompt.length);
+        console.log('[ChatWindow] First 200 chars of context:', updatedContextPrompt.substring(0, 200));
+            
+            // Limit conversation history to prevent context overflow
+            const maxHistoryMessages = 10; // Keep last 10 messages (5 exchanges)
+            const limitedMessages = newMessages.slice(-maxHistoryMessages);
+            
             // Always go through Ollama for all messages
-            // The context already includes live API data if available
             const chatMessages: ChatMessage[] = [
-                { role: 'system', content: contextPrompt },
-                ...newMessages.map(msg => ({ role: msg.role, content: msg.content }))
+                { role: 'system', content: updatedContextPrompt },
+                ...limitedMessages.map(msg => ({ role: msg.role, content: msg.content }))
             ];
+            
+            console.log('[ChatWindow] Sending', chatMessages.length, 'messages to Ollama (including system)');
             
             const response = await apiClientRef.current.chatCompletion({
                 messages: chatMessages,
                 temperature: 0.7,
                 max_tokens: 500
             });
+            console.log('[ChatWindow] Received response from Ollama:', response.content.substring(0, 100) + '...');
             setMessages([...newMessages, { role: 'assistant' as const, content: response.content }]);
         } catch (err) {
             console.error("Error in chat:", err);
@@ -173,49 +170,13 @@ export default function ChatWindow({ onClose, className }: ChatWindowProps): JSX
                 <span>Faraz's Assistant</span>
                 <div className="flex items-center gap-2">
                     <span className="message-counter">{maxMessages - messageCount} msgs left</span>
-                    <button 
-                        onClick={() => setShowSettings(true)}
-                        className="text-gray-400 hover:text-white transition"
-                        title="API Settings"
-                    >
-                        ⚙️
-                    </button>
                     <button onClick={onClose}>✕</button>
                 </div>
             </div>
             <div className="chat-body">
-                {/* Connection status indicator */}
-                {messages.length === 1 && (
-                    <div className="connection-status">
-                        <div className="text-xs text-gray-500 mb-2">
-                            API Status: 
-                            <span className={spotifyConnected ? 'text-green-400 ml-2' : 'text-gray-600 ml-2'}>
-                                🎵 Spotify {spotifyConnected ? '✓' : '✗'}
-                            </span>
-                            <span className={malConnected ? 'text-green-400 ml-2' : 'text-gray-600 ml-2'}>
-                                📺 MAL {malConnected ? '✓' : '✗'}
-                            </span>
-                        </div>
-                    </div>
-                )}
                 {messages.map((m, i) => (
                     <div key={i} className={'message ' + m.role}>
                         {m.content}
-                        {m.metadata?.type === 'spotify' && m.metadata.data && (
-                            <div className="message-metadata">
-                                🎵 Spotify
-                            </div>
-                        )}
-                        {m.metadata?.type === 'anime' && (
-                            <div className="message-metadata">
-                                📺 MyAnimeList
-                            </div>
-                        )}
-                        {m.metadata?.type === 'reddit' && (
-                            <div className="message-metadata">
-                                🏴‍☠️ r/OnePiece
-                            </div>
-                        )}
                     </div>
                 ))}
                 {loading && <div className="message assistant">...</div>}
@@ -226,15 +187,11 @@ export default function ChatWindow({ onClose, className }: ChatWindowProps): JSX
                     value={input}
                     onChange={(e: React.ChangeEvent<HTMLInputElement>) => setInput(e.target.value)}
                     onKeyDown={(e: React.KeyboardEvent<HTMLInputElement>) => e.key === 'Enter' && sendMessage()}
-                    placeholder="Ask about Faraz, his projects, or try 'What's he listening to?'"
+                    placeholder="Ask about Faraz"
                     disabled={loading}
                 />
                 <button onClick={sendMessage} disabled={loading}>Send</button>
             </div>
-            <ChatSettings 
-                isOpen={showSettings} 
-                onClose={() => setShowSettings(false)} 
-            />
         </div>
     );
 }

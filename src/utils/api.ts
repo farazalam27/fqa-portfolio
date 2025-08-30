@@ -262,20 +262,19 @@ export class ApiClient {
     }
 
     private async ollamaRequest(request: ChatCompletionRequest): Promise<ChatCompletionResponse> {
-        // For Ollama, we'll use the generate endpoint with a formatted prompt
-        const systemMessage = request.messages.find(m => m.role === 'system')?.content || '';
-        const lastUserMessage = request.messages.filter(m => m.role === 'user').pop()?.content || '';
-        const prompt = systemMessage ? `${systemMessage}\n\nUser: ${lastUserMessage}` : lastUserMessage;
-
+        // Use the chat endpoint to maintain conversation history
+        console.log('[API] Sending to Ollama with model:', this.config.model);
+        console.log('[API] Number of messages:', request.messages.length);
+        
         try {
-            const response = await fetch(`${this.config.baseUrl}/api/generate`, {
+            const response = await fetch(`${this.config.baseUrl}/api/chat`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
                 },
                 body: JSON.stringify({
                     model: this.config.model || 'llama3.2',
-                    prompt: prompt,
+                    messages: request.messages,
                     stream: false,
                     options: {
                         temperature: request.temperature ?? 0.7,
@@ -294,7 +293,7 @@ export class ApiClient {
 
             const data = await response.json();
             return {
-                content: data.response || ''
+                content: data.message?.content || ''
             };
         } catch (error) {
             // Check if it's a network error

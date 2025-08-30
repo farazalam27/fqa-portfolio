@@ -134,12 +134,16 @@ export class ContextLoader {
                     if (response.ok) {
                         const contentType = response.headers.get('content-type');
                         if (contentType?.includes('application/json')) {
-                            this.context[key as keyof ChatContext] = await response.json();
+                            const data = await response.json();
+                            this.context[key as keyof ChatContext] = data;
+                            console.log(`[ContextLoader] Loaded ${key}:`, Object.keys(data).slice(0, 3));
                         } else {
-                            this.context[key as keyof ChatContext] = await response.text() as any;
+                            const text = await response.text();
+                            this.context[key as keyof ChatContext] = text as any;
+                            console.log(`[ContextLoader] Loaded ${key} (text):`, text.substring(0, 50) + '...');
                         }
                     } else {
-                        console.warn(`Context file not found: ${path} (${response.status})`);
+                        console.warn(`[ContextLoader] Context file not found: ${path} (${response.status})`);
                     }
                 } catch (error) {
                     console.error(`Failed to load ${path}:`, error);
@@ -153,7 +157,9 @@ export class ContextLoader {
             await this.loadLiveData();
             
             this.contextLoaded = true;
-            console.log('Context loaded successfully:', Object.keys(this.context));
+            console.log('[ContextLoader] Context loaded successfully:', Object.keys(this.context));
+            console.log('[ContextLoader] Has resume?', !!this.context.resume);
+            console.log('[ContextLoader] Has technical skills?', !!this.context.technicalSkills);
         } catch (error) {
             console.error('Error loading context:', error);
             // Return partial context even on error
@@ -259,8 +265,49 @@ export class ContextLoader {
         this.loadingPromise = null;
     }
     
-    getContextPrompt(): string {
-        let prompt = `You are Faraz Alam's AI assistant. You have access to detailed information about Faraz including:\n\n`;
+    // Detect API needs from user query
+    detectApiNeeds(query: string): { spotify: boolean; mal: boolean; reddit: boolean } {
+        const lowerQuery = query.toLowerCase();
+        const needs = {
+            spotify: lowerQuery.includes('listening') || lowerQuery.includes('spotify') || 
+                    lowerQuery.includes('music') || lowerQuery.includes('song') || 
+                    lowerQuery.includes('artist') || lowerQuery.includes('track'),
+            mal: lowerQuery.includes('anime') || lowerQuery.includes('watching') || 
+                 lowerQuery.includes('mal') || lowerQuery.includes('myanimelist'),
+            reddit: lowerQuery.includes('one piece') && 
+                   (lowerQuery.includes('theor') || lowerQuery.includes('reddit') || 
+                    lowerQuery.includes('latest') || lowerQuery.includes('trending'))
+        };
+        console.log('[ContextLoader] Detected API needs for query:', query, needs);
+        return needs;
+    }
+    
+    // Fetch live data on-demand based on query
+    async fetchLiveDataForQuery(query: string): Promise<void> {
+        const needs = this.detectApiNeeds(query);
+        const promises: Promise<void>[] = [];
+        
+        if (needs.spotify && spotifyService.isAuthenticated()) {
+            promises.push(this.loadSpotifyData());
+        }
+        
+        if (needs.mal && malService.isAuthenticated()) {
+            promises.push(this.loadAnimeData());
+        }
+        
+        if (needs.reddit) {
+            promises.push(this.loadRedditData());
+        }
+        
+        if (promises.length > 0) {
+            await Promise.allSettled(promises);
+        }
+    }
+    
+    getContextPrompt(userQuery?: string): string {
+        let prompt = `CRITICAL: You are Faraz Alam's portfolio AI assistant. You MUST ALWAYS respond as Faraz's assistant, NEVER as a generic AI or programming assistant.
+
+Your role: Help visitors learn about Faraz's background, skills, projects, and interests. You have access to his resume, technical skills, and personal interests.\n\n`;
         
         if (this.context.resume) {
             prompt += `Professional Background:\n`;
@@ -323,7 +370,12 @@ export class ContextLoader {
             prompt += `- Has theories about One Piece anime\n`;
         }
 
-        prompt += `\nIMPORTANT: You are speaking AS Faraz's AI assistant on his portfolio website. Be friendly and professional. When asked about skills or experience, reference Faraz's actual background from the context provided above. Emphasize his expertise in Java, Spring Boot, Python, PySpark, Go, AWS, and enterprise development.\n\n`;
+        prompt += `\nREMEMBER: 
+- You are on Faraz's portfolio website at fqa.info
+- Always speak as Faraz's assistant, not as a generic AI
+- Reference Faraz's actual background from the data above
+- Be friendly and professional
+- If asked about programming help, relate it back to Faraz's expertise\n\n`;
         
         // Add API availability status
         prompt += `API Connection Status:\n`;
@@ -341,12 +393,23 @@ export class ContextLoader {
         
         prompt += `- Reddit: Always available (you can fetch One Piece theories anytime)\n\n`;
         
+        // Add static data summary if no live data
+        if (!this.context.liveSpotify && this.context.spotifyRecommendations) {
+            prompt += `Faraz's music taste (from profile): ${this.context.spotifyRecommendations.favorite_artists.join(', ')}\n`;
+        }
+        if (!this.context.liveAnime && this.context.animeRecommendations) {
+            prompt += `Faraz's favorite anime: ${this.context.animeRecommendations.favorites.join(', ')}\n`;
+        }
+        prompt += `\n`;
+        
         prompt += `When users ask about Spotify, anime, or Reddit data:\n`;
         prompt += `- If connected: Use the live data provided in the context above\n`;
         prompt += `- If not connected: Suggest they connect via the ⚙️ settings button\n`;
         prompt += `- For Reddit: You can mention you can fetch the latest theories\n\n`;
         
-        prompt += `User question: `;
+        if (userQuery) {
+            prompt += `User question: ${userQuery}`;
+        }
         
         return prompt;
     }

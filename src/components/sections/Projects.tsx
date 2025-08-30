@@ -16,46 +16,6 @@ export const Projects = (): JSX.Element => {
                     <div className="p-6 rounded-xl border border-white/10 hover:-translate-y-1 hover:border-blue-500/30
                                     hover:shadow-[0_2px_8px_rgba(59, 130, 246, 0.1)] transition-all"
                     >
-                        <h3 className="text-xl font-bold mb-2">MindMesh</h3>
-                        <p className="text-gray-400 mb-4">
-                            Enterprise-grade collaborative innovation platform for distributed teams. Features idea management, 
-                            democratic voting, AI-powered analytics with PySpark ML, and decision tracking. Built with 
-                            microservices architecture, real-time processing, and comprehensive testing (95%+ coverage).
-                        </p>
-                        <div className="flex flex-wrap gap-2 mb-4">
-                            {["Python", "FastAPI", "PySpark", "Next.js", "PostgreSQL", "Redis", "Docker"].map((tech, key) => (
-                                <span
-                                    key={key}
-                                    className="bg-blue-500/10 text-blue-500 py-1 px-3 rounded-full text-sm hover:bg-blue-500/20
-                                                    hover:shadow-[0_2px_8px_rgba(59, 130, 246, 0.1)] transition"
-                                >
-                                        {tech}
-                                </span>
-                            ))}
-                        </div>
-
-                        <div className="flex justify-between items-center">
-                            <a
-                                href="https://github.com/farazalam27/mindmesh"
-                                target="_blank"
-                                className="text-blue-400 hover:text-transparent hover:bg-gradient-to-r hover:from-blue-500 hover:to-cyan-400 hover:bg-clip-text transition-all duration-200 my-4 cursor-pointer font-medium"
-                                onClick={(e: React.MouseEvent<HTMLAnchorElement>) => {
-                                    e.preventDefault();
-                                    window.open("https://github.com/farazalam27/mindmesh", "_blank");
-                                }}
-                                onTouchEnd={(e: React.TouchEvent<HTMLAnchorElement>) => {
-                                    e.preventDefault();
-                                    window.open("https://github.com/farazalam27/mindmesh", "_blank");
-                                }}
-                            >
-                                    View Project
-                            </a>
-                        </div>
-                    </div>
-
-                    <div className="p-6 rounded-xl border border-white/10 hover:-translate-y-1 hover:border-blue-500/30
-                                    hover:shadow-[0_2px_8px_rgba(59, 130, 246, 0.1)] transition-all"
-                    >
                         <h3 className="text-xl font-bold mb-2">Daniel's Mechanic Shop</h3>
                         <p className="text-gray-400 mb-4">
                             A full-stack mechanic shop management system featuring customer appointment scheduling, 
