@@ -5,8 +5,8 @@ export const About = (): JSX.Element => {
     const languages: string[] = ["JavaScript", "TypeScript", "Java", "Go", "Kotlin", "Swift", "Python", "SQL"];
     const frameworks: string[] = ["Angular", "React", "Next.js", "Node.js", "Express.js", "Spring Boot", "Tailwind CSS", "Bootstrap"];
     const databases: string[] = ["PostgreSQL", "MongoDB", "SQLite", "DynamoDB", "RDS"];
-    const tools: string[] = ["AWS", "Lambda", "S3", "EC2", "Docker", "Kubernetes", "Jenkins", "Serverless", "Git", "Maven", "Gradle", "Postman", "JIRA"];
-    const certifications: string[] = ["AWS Solutions Architect Associate", "AWS Developer Associate"];
+    const tools: string[] = ["Claude", "AWS", "Lambda", "S3", "EC2", "Docker", "Kubernetes", "Jenkins", "GitLab", "Git", "Appian", "Serverless", "Maven", "Gradle", "Postman", "JIRA"];
+    const certifications: string[] = ["AWS Solutions Architect Associate", "AWS Developer Associate", "Appian Certified Associate Developer"];
 
     return (
         <section id="about" className="min-h-screen flex items-center justify-center py-20"
@@ -112,7 +112,33 @@ export const About = (): JSX.Element => {
                         <h3 className="text-xl font-bold mb-4">💼 Work Experience</h3>
                         <div className="space-y-6 text-gray-300">
                             <div>
-                                <h4 className="font-semibold text-white text-lg">Full Stack Developer</h4>
+                                <h4 className="font-semibold text-white text-lg">Software Engineering Senior Analyst</h4>
+                                <div className="text-blue-400 mb-2">Accenture Federal Services • Arlington, VA • March 2026 - Present</div>
+                                <div className="space-y-4 mb-8">
+                                    <div>
+                                        <h5 className="font-medium text-gray-200 mb-2">Federal Client</h5>
+                                        <ul className="list-disc list-inside space-y-1 text-sm ml-4">
+                                            <li>Modernizing core government application using Claude and AWS</li>
+                                            <li>Developing and tracking repositories using gitlab</li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <h4 className="font-semibold text-white text-lg mt-6">Software Developer</h4>
+                                <div className="text-blue-400 mb-2">Precise Software Solutions • Arlington, VA • December 2025 - March 2026</div>
+                                <div className="space-y-4 mb-8">
+                                    <div>
+                                        <h5 className="font-medium text-gray-200 mb-2">Federal Client</h5>
+                                        <ul className="list-disc list-inside space-y-1 text-sm ml-4">
+                                            <li>Serving as Lead Developer for a core Java application, executing a full migration from Java 8 to 21</li>
+                                            <li>Eliminated N+1 performance bottlenecks by optimizing Oracle SQL queries and data access patterns</li>
+                                            <li>Refactored legacy user interfaces using Java PrimeFaces (JSF) to enhance application usability and workflows</li>
+                                            <li>Streamlined agency processes by developing and modernizing critical Appian components</li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <h4 className="font-semibold text-white text-lg mt-6">Java Backend Developer</h4>
                                 <div className="text-blue-400 mb-2">CapTech • Reston, VA • September 2020 - December 2023</div>
                                 
                                 <div className="space-y-4">

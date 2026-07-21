@@ -1,6 +1,6 @@
 {
   "name": "Faraz Alam",
-  "title": "Full Stack Developer",
+  "title": "Software Engineering Senior Analyst",
   "email": "contact@farazqalam.com",
   "location": "Virginia, USA",
   "summary": "Experienced Full Stack Developer with 3+ years building enterprise applications for Fortune 500 companies. Specialized in Java/Spring Boot, Go microservices, iOS development, and cloud architecture with AWS. Strong background in performance optimization, machine learning integration, and test-driven development.",
@@ -13,11 +13,44 @@
   },
   "certifications": [
     "AWS Solutions Architect Associate",
-    "AWS Developer Associate"
+    "AWS Developer Associate",
+    "Appian Certified Associate Developer"
   ],
   "experience": [
     {
-      "title": "Full Stack Developer",
+      "title": "Software Engineering Senior Analyst",
+      "company": "Accenture Federal Services",
+      "location": "Arlington, VA",
+      "duration": "March 2026 - Present",
+      "clients": [
+        {
+          "name": "Federal Client",
+          "achievements": [
+            "Modernizing core government application using Claude and AWS",
+            "Developing and tracking repositories using gitlab"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Software Developer",
+      "company": "Precise Software Solutions",
+      "location": "Arlington, VA",
+      "duration": "December 2025 - March 2026",
+      "clients": [
+        {
+          "name": "Federal Client",
+          "achievements": [
+            "Serving as Lead Developer for a core Java application, executing a full migration from Java 8 to 21",
+            "Eliminated N+1 performance bottlenecks by optimizing Oracle SQL queries and data access patterns",
+            "Refactored legacy user interfaces using Java PrimeFaces (JSF) to enhance application usability and workflows",
+            "Streamlined agency processes by developing and modernizing critical Appian components"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Java Backend Developer",
       "company": "CapTech",
       "location": "Reston, VA",
       "duration": "September 2020 - December 2023",

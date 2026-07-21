@@ -18,9 +18,9 @@
   "databases": ["PostgreSQL", "MongoDB", "Redis", "DynamoDB", "RDS", "SQLite"],
   "cloud_services": {
     "aws": ["Lambda", "S3", "EC2", "KMS", "SNS", "DynamoDB", "RDS"],
-    "deployment": ["Docker", "Kubernetes", "Serverless"]
+    "deployment": ["Docker", "Kubernetes", "Serverless", "Appian"]
   },
-  "tools": ["Git", "Jenkins", "Maven", "Gradle", "Postman", "JIRA", "ServiceNow", "pgAdmin"],
+  "tools": ["Claude", "GitLab", "Git", "Jenkins", "Maven", "Gradle", "Postman", "JIRA", "ServiceNow", "pgAdmin"],
   "certifications": [
     "AWS Solutions Architect Associate",
     "AWS Developer Associate"
