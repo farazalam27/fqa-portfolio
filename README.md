@@ -1,4 +1,4 @@
-# fqa.info - Personal Portfolio Website
+# farazqalam.com - Personal Portfolio Website
 
 A modern, responsive portfolio website built with React 19 and Tailwind CSS 4. Features an AI-powered chat assistant with real-time API integrations for Spotify, MyAnimeList, and Reddit.
 
@@ -85,14 +85,14 @@ The chat supports multiple providers:
 1. Create app at [Spotify Developer Dashboard](https://developer.spotify.com/dashboard)
 2. Add redirect URIs:
    - Development: `http://localhost:5173/spotify-callback`
-   - Production: `https://fqa.info/spotify-callback`
+   - Production: `https://farazqalam.com/spotify-callback`
 3. Add Client ID to `.env` files
 
 #### MyAnimeList Setup
 1. Register app at [MAL API Config](https://myanimelist.net/apiconfig)
 2. Add redirect URLs:
    - Development: `http://localhost:5173/mal-callback`
-   - Production: `https://fqa.info/mal-callback`
+   - Production: `https://farazqalam.com/mal-callback`
 3. Add Client ID to `.env` files
 
 #### Reddit API
@@ -154,7 +154,7 @@ Once APIs are connected via the settings (⚙️) button:
 
 ## 📞 Contact
 
-- Website: [fqa.info](https://fqa.info)
+- Website: [farazqalam.com](https://farazqalam.com)
 - LinkedIn: [linkedin.com/in/fqalam](https://www.linkedin.com/in/fqalam)
 - GitHub: [github.com/farazalam27](https://www.github.com/farazalam27)
 
